@@ -11,7 +11,10 @@
  * file.
  */
 use Doctrine\DBAL\Driver\PDOMySql\Driver as PDOMySqlDriver;
-var_dump(getenv("CLEARDB_DATABASE_URL"));exit;
+
+
+$db = parse_url(getenv('CLEARDB_DATABASE_URL'));
+
 return [
     'doctrine' => [
         'connection' => [
@@ -19,9 +22,9 @@ return [
                 'driverClass' => PDOMySqlDriver::class,
                 'params' => [
                     'host'     => parse_url(getenv("CLEARDB_DATABASE_URL")),                    
-                    'user'     => 'root',
-                    'password' => 'root',
-                    'dbname'   => 'blog',
+                    'user'     => $db['user'],
+                    'password' => $db['pass'],
+                    'dbname'   => substr($db["path"], 1),
                 ]
             ],            
         ],        
