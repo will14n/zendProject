@@ -11,7 +11,7 @@
  * file.
  */
 use Doctrine\DBAL\Driver\PDOMySql\Driver as PDOMySqlDriver;
-
+var_dump(getenv("CLEARDB_DATABASE_URL"));exit;
 return [
     'doctrine' => [
         'connection' => [
