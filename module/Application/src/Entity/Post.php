@@ -107,6 +107,7 @@ class Post
 	 * @ORM\OneToMany(targetEntity="\Application\Entity\Comment", mappedBy="post")
 	 * @ORM\JoinColumn(name="id", referencedColumnName="post_id")
 	 */
+	protected $tags;
 	protected $comments;
 		
 	/**
@@ -115,6 +116,7 @@ class Post
 	public function __construct() 
 	{
 		$this->comments = new ArrayCollection();               
+		$this->tags = new ArrayCollection();        
 	}
 		
 	/**
@@ -142,14 +144,6 @@ class Post
 	 *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
 	 *      )
 	 */
-	protected $tags;
-		
-	// Constructor.
-	public function __construct() 
-	{ 
-		//...  
-		$this->tags = new ArrayCollection();        
-	}
 
 	// Returns tags for this post.
 	public function getTags() 
