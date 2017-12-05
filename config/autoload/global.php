@@ -18,9 +18,9 @@ return [
             'orm_default' => [
                 'driverClass' => PDOMySqlDriver::class,
                 'params' => [
-                    'host'     => '127.0.0.1',                    
-                    'user'     => 'blog',
-                    'password' => '<password>',
+                    'host'     => parse_url(getenv("CLEARDB_DATABASE_URL"));,                    
+                    'user'     => 'root',
+                    'password' => 'root',
                     'dbname'   => 'blog',
                 ]
             ],            
