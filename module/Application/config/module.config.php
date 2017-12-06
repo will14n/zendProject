@@ -35,13 +35,33 @@ return [
 					],
 				],
 			],
+			'posts' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/posts[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]*'
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\PostController::class,
+                        'action'        => 'index',
+                    ],
+                ],
+            ],
 		],
 	],
+	'service_manager' => [
+        //...
+        'factories' => [
+            Service\PostManager::class => Service\Factory\PostManagerFactory::class,
+        ],
+    ],
 	'controllers' => [
 		//...
 		'factories' => [
-			Controller\IndexController::class => 
-							Controller\Factory\IndexControllerFactory::class,    
+			Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
+			 Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
 		],
 	],
 	'view_manager' => [
