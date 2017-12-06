@@ -16,7 +16,7 @@ use Doctrine\DBAL\Driver\PDOMySql\Driver as PDOMySqlDriver;
 $url = getenv('JAWSDB_URL');
 $db = end(explode("/", $url));
 $dados = explode(":", $url);
-var_dump($db);exit;
+var_dump($dados);exit;
 return [
     'doctrine' => [
         'connection' => [
