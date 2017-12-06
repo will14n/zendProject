@@ -108,8 +108,16 @@ class Post
 	 * @ORM\OneToMany(targetEntity="\Application\Entity\Comment", mappedBy="post")
 	 * @ORM\JoinColumn(name="id", referencedColumnName="post_id")
 	 */
-	protected $tags;
 	protected $comments;
+
+	/**
+	 * @ORM\ManyToMany(targetEntity="\Application\Entity\Tag", inversedBy="posts")
+	 * @ORM\JoinTable(name="post_tag",
+	 *      joinColumns={@ORM\JoinColumn(name="post_id", referencedColumnName="id")},
+	 *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
+	 *      )
+	 */
+	protected $tags;
 		
 	/**
 	 * Constructor.
@@ -137,14 +145,6 @@ class Post
 	{
 		$this->comments[] = $comment;
 	}
-
-	/**
-	 * @ORM\ManyToMany(targetEntity="\Application\Entity\Tag", inversedBy="posts")
-	 * @ORM\JoinTable(name="post_tag",
-	 *      joinColumns={@ORM\JoinColumn(name="post_id", referencedColumnName="id")},
-	 *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
-	 *      )
-	 */
 
 	// Returns tags for this post.
 	public function getTags() 
