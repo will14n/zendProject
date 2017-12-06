@@ -13,7 +13,8 @@
 use Doctrine\DBAL\Driver\PDOMySql\Driver as PDOMySqlDriver;
 
 
-$db = parse_url(getenv('CLEARDB_DATABASE_URL'));
+$url = getenv('JAWSDB_URL');
+$db = parse_url($url);
 
 return [
     'doctrine' => [
@@ -24,7 +25,7 @@ return [
                     'host'     => $db['host'],                    
                     'user'     => $db['user'],
                     'password' => $db['pass'],
-                    'dbname'   => substr($db["path"], 1),
+                    'dbname'   => ltrim($dbparts['path'],'/'),
                 ]
             ],            
         ],
