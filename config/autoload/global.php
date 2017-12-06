@@ -21,7 +21,7 @@ return [
                     'host'     => 'k3xio06abqa902qt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',                    
                     'user'     => 'of5931pdu388d6ff',
                     'password' => 'p3k6qkibo0cqsn0o',
-                    'dbname'   => '`xkzeet9m5yj5cs47`',
+                    'dbname'   => 'xkzeet9m5yj5cs47',
                 ]
             ],            
         ],
