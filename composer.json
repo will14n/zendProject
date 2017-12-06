@@ -46,5 +46,10 @@
     },
     "require-dev": {
         "zendframework/zend-developer-tools": "^1.1.0"
+    },
+    "scripts": {
+        "pre-install-cmd": [
+            "AppBundle\\Composer\\HerokuEnvironment::populateEnvironment"
+        ]
     }
 }
