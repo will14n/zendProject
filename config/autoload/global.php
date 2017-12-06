@@ -12,21 +12,16 @@
  */
 use Doctrine\DBAL\Driver\PDOMySql\Driver as PDOMySqlDriver;
 
-
-$url = getenv('JAWSDB_URL');
-$db = end(explode("/", $url));
-$dados = explode(":", $url);
-var_dump($dados);exit;
 return [
     'doctrine' => [
         'connection' => [
             'orm_default' => [
                 'driverClass' => PDOMySqlDriver::class,
                 'params' => [
-                    /*'host'     => $db['host'],                    
-                    'user'     => $db['user'],
-                    'password' => $db['pass'],
-                    'dbname'   => ,*/
+                    'host'     => 'k3xio06abqa902qt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',                    
+                    'user'     => 'of5931pdu388d6ff',
+                    'password' => 'p3k6qkibo0cqsn0o',
+                    'dbname'   => '`xkzeet9m5yj5cs47`',
                 ]
             ],            
         ],
