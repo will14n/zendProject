@@ -19,22 +19,45 @@ class IndexController extends AbstractActionController
 	 */
 	private $entityManager;
 	
-	// Constructor method is used to inject dependencies to the controller.
-	public function __construct($entityManager) 
-	{
-		$this->entityManager = $entityManager;
-	}
+	/**
+     * Post manager.
+     * @var Application\Service\PostManager 
+     */
+    private $postManager;
+
+	public function __construct($entityManager, $postManager) 
+    {
+        $this->entityManager = $entityManager;
+        $this->postManager = $postManager;
+    }
 	
 	// This is the default "index" action of the controller. It displays the 
 	// Posts page containing the recent blog posts.
 	public function indexAction() 
-	{
-		// Get recent posts
-		$posts = $this->entityManager->getRepository(Post::class)->findBy(['status'=>Post::STATUS_PUBLISHED], ['dateCreated'=>'DESC']);
-				
-		// Render the view template
-		return new ViewModel([
-			'posts' => $posts
-		]);
-	}
+    {
+        $tagFilter = $this->params()->fromQuery('tag', null);
+        
+        if ($tagFilter) {
+         
+            // Filter posts by tag
+            $posts = $this->entityManager->getRepository(Post::class)
+                    ->findPostsByTag($tagFilter);
+            
+        } else {
+            // Get recent posts
+            $posts = $this->entityManager->getRepository(Post::class)
+                    ->findBy(['status'=>Post::STATUS_PUBLISHED], 
+                             ['dateCreated'=>'DESC']);
+        }
+        
+        // Get popular tags.
+        $tagCloud = $this->postManager->getTagCloud();
+        
+        // Render the view template.
+        return new ViewModel([
+            'posts' => $posts,
+            'postManager' => $this->postManager,
+            'tagCloud' => $tagCloud
+        ]);
+    }
 }
