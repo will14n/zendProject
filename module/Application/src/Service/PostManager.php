@@ -86,8 +86,7 @@ class PostManager
                 continue; 
             }
             
-            $tag = $this->entityManager->getRepository(Tag::class)
-                    ->findOneByName($tagName);
+            $tag = $this->entityManager->getRepository(Tag::class)->findOneByName($tagName);
             if ($tag == null)
                 $tag = new Tag();
             
@@ -197,8 +196,7 @@ class PostManager
     {
         $tagCloud = [];
                 
-        $posts = $this->entityManager->getRepository(Post::class)
-                    ->findPostsHavingAnyTag();
+        $posts = $this->entityManager->getRepository(Post::class)->findPostsHavingAnyTag();
         $totalPostCount = count($posts);
         
         $tags = $this->entityManager->getRepository(Tag::class)
