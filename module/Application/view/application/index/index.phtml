@@ -41,10 +41,7 @@ $this->pageBreadcrumbs()->setItems([
 
     <?php endforeach; ?>
 
-    <?= $this->paginationControl($posts,
-                    'Sliding',
-                    'application/partial/paginator', 
-                    array('route' => 'application')); ?>
+    <?= $this->paginationControl($posts, 'Sliding', 'application/partial/paginator', array('route' => 'application')); ?>
     
     </div>
     
