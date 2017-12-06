@@ -38,36 +38,35 @@ return [
 			'posts' => [
 				'type'    => Segment::class,
 				'options' => [
-						'route'    => '/posts[/:action[/:id]]',
-						'constraints' => [
-								'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-								'id' => '[0-9]*'
-						],
-						'defaults' => [
-								'controller'    => Controller\PostController::class,
-								'action'        => 'index',
-						],
+					'route'    => '/posts[/:action[/:id]]',
+					'constraints' => [
+						'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+						'id' => '[0-9]*'
+					],
+					'defaults' => [
+						'controller'    => Controller\PostController::class,
+						'action'        => 'index',
+					],
 				],
 			],
 			'contactus' => [
 				'type' => Literal::class,
-					'options' => [
-						'route'    => '/contactus',
-						 'defaults' => [
-							 'controller' => Controller\IndexController::class,
-							 'action'     => 'contactUs',
-						],
-					 ],
-				 ],
-			 ],		 
+				'options' => [
+					'route'    => '/contactus',
+					'defaults' => [
+						'controller' => Controller\IndexController::class,
+						'action'     => 'contactUs',
+					],
+				],
+			],		 
 		],
 	],
 	'service_manager' => [
-				//...
-				'factories' => [
-						Service\PostManager::class => Service\Factory\PostManagerFactory::class,
-				],
+		//...
+		'factories' => [
+			Service\PostManager::class => Service\Factory\PostManagerFactory::class,
 		],
+	],
 	'controllers' => [
 		//...
 		'factories' => [
