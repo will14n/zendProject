@@ -9,6 +9,9 @@ namespace Application;
 
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
+use Zend\Router\Http\Regex;
+use Zend\ServiceManager\Factory\InvokableFactory;
+use Application\Route\StaticRoute;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 
 
