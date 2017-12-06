@@ -23,10 +23,10 @@ return [
             'orm_default' => [
                 'driverClass' => PDOMySqlDriver::class,
                 'params' => [
-                    'host'     => $db['host'],                    
+                    /*'host'     => $db['host'],                    
                     'user'     => $db['user'],
                     'password' => $db['pass'],
-                    'dbname'   => ,
+                    'dbname'   => ,*/
                 ]
             ],            
         ],
